@@ -88,18 +88,6 @@
         <p class="fineprint">Runs in your browser over my project notes. No API key on this page — in production I would call Claude or ChatGPT from a Node backend.</p>
       </div>
 
-      <article class="project ai-plan">
-        <span class="tag">How I would integrate AI</span>
-        <h3>Lab assistant API</h3>
-        <p>On the Clinical Laboratory system I would add a Node route that sends a sample record to Claude or ChatGPT and returns a short status summary for staff.</p>
-        <ol class="steps">
-          <li>User opens a sample in Angular.</li>
-          <li>Front end calls <code>POST /api/ai/summarize</code>.</li>
-          <li>Node reads MySQL via Prisma, builds a tight prompt.</li>
-          <li>Provider API returns a summary; UI shows it next to the record.</li>
-        </ol>
-        <p class="tools">Angular · Node.js · REST · Claude / ChatGPT API</p>
-      </article>
     </div>
   </section>
 
