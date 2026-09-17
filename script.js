@@ -109,3 +109,7 @@ addBubble(
   "Hi — I’m a guided assistant over Ronel’s work. Ask about the lab system, N-Compass, QA automation, or how he’d hook an AI API into a Node + Angular app.",
   "bot"
 );
+
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
