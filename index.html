@@ -3,151 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0b12" />
+  <meta name="description" content="Ronel M. Dela Cruz — software developer building practical web applications, clean interfaces, and reliable automated tests." />
   <title>Ronel M. Dela Cruz — Software Developer</title>
-  <meta name="description" content="Front-end and software developer in the Philippines. Angular, React, Node.js, Figma, and QA automation." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
-  <header class="nav">
-    <a class="logo" href="#top">RDC</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">Menu</button>
-    <nav class="links" id="navLinks">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Ronel Dela Cruz home"><span class="brand-mark">r.</span><span>RONEL DELA CRUZ</span></a>
+    <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu <span>＋</span></button>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#work">Projects <span>01</span></a>
+      <a href="#about">About <span>02</span></a>
+      <a href="#journey">Journey <span>03</span></a>
+      <a href="#contact">Contact <span>04</span></a>
     </nav>
   </header>
 
-  <section class="hero" id="top">
-    <p class="eyebrow">Software Development · Web Development · UI Design</p>
-    <h1>Ronel M. <em>Dela Cruz</em></h1>
-    <p class="lede">I design in Figma, build in Angular and React, and ship reliable web systems including inventory tools, lab workflows, and Python/Selenium test automation.</p>
-    <div class="hero-actions">
-      <a class="btn" href="#work">See selected work</a>
-    </div>
-  </section>
-
-  <section id="work" class="section">
-    <div class="section-head">
-      <h2>Project highlights</h2>
-      <p>A things I have designed and built.</p>
-    </div>
-    <div class="projects">
-      <article class="project">
-        <span class="tag">Digital Marketing Associate</span>
-        <h3>SEO, Marketing Automation, and Web dev</h3>
-        <p>Worked on SEO, digital marketing campaigns, marketing automation, and website development. Managed SMS and email workflows, audience segmentation, and follow-ups using GoHighLevel, Zapier, and Aloware. Also worked on WordPress/Elementor websites, SEO audits, page optimization, and Researched keywords and negative keywords.</p>
-        <p class="tools">WordPress· Elementor · Aloware · GoHighLevel · Zapier </p>
-      </article>
-      <article class="project">
-        <span class="tag">Capstone Full-Stack Developer</span>
-        <h3>Clinical Laboratory Information System</h3>
-        <p>Full-stack system for tracking laboratory samples and consumables. Angular front end, Node.js API, Prisma + MySQL. Designed so staff can move from intake to status without spreadsheet chaos.</p>
-        <p class="tools">Angular · Nodejs · Prisma · MySQL · Figma</p>
-      </article>
-      <article class="project">
-        <span class="tag">Front-end Developer</span>
-        <h3>Equipment Inventory</h3>
-        <p>React front end for tracking equipment, utensils, and computer parts. Add, update, and locate items so the team can see what is on hand without manual logs.</p>
-        <p class="tools">Figma · React/Typescript</p>
-      </article>
-      <article class="project">
-        <span class="tag">Software Engineer</span>
-        <h3>QA Automation</h3> 
-        <p>Python and Selenium coverage on real user paths regressions, broken flows, and performance checks before release, so the team can ship with fewer manual passes.</p>
-        <p class="tools">Python · Selenium</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="about" class="section about">
-    <div class="section-head">
-      <h2>Hi, I’m Ronel</h2>
-      <p>Front-end minded software developer who enjoys turning complex workflows into practical, usable solutions.</p>
-    </div>
-    <div class="about-grid">
-      <p>I recently completed a BS in Information Systems at Carlos Hilado Memorial State University.</p>
-      <p>I care about clean interfaces, structured data, and building applications and websites that people can actually use.</p>
-      <div class="stacks">
-        <div>
-          <h3>Build</h3>
-          <ul>
-            <li>HTML / CSS / JavaScript</li>
-            <li>Angular 14</li>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>PHP</li>
-            <li>Python</li>
-          </ul>
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-copy">
+        <div class="status-pill reveal"><span class="status-dot"></span> OPEN TO OPPORTUNITIES <span class="status-line"></span> PHILIPPINES</div>
+        <p class="kicker reveal"><span class="kicker-symbol">✳</span> SOFTWARE DEVELOPER · WEB BUILDER · PROBLEM SOLVER</p>
+        <h1 class="hero-title reveal">Turning ideas<br>into <span class="gradient-text">useful things.</span></h1>
+        <p class="hero-description reveal">I’m Ronel — a software developer who builds practical web applications, thoughtful interfaces, and reliable workflows. I work across frontend development, backend APIs, UI design, and QA automation.</p>
+        <div class="hero-actions reveal">
+          <a class="button button-primary" href="#work">Explore my work <span>↘</span></a>
+          <a class="button button-quiet" href="#contact">Let’s talk <span>↗</span></a>
         </div>
-        <div>
-          <h3>Data & quality</h3>
-          <ul>
-            <li>MySQL</li>
-            <li>Prisma ORM</li>
-            <li>REST APIs</li>
-            <li>Selenium</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Design & tools</h3>
-          <ul>
-            <li>Figma</li>
-            <li>WordPress / Elementor</li>
-            <li>GitHub</li>
-            <li>VS Code</li>
-          </ul>
-        </div>
+        <div class="hero-foot reveal"><span class="mono">CURRENT TOOLKIT</span><div class="tool-pills"><span>React</span><span>Angular</span><span>Node.js</span><span>Python</span></div></div>
       </div>
-    </div>
-  </section>
+      <div class="hero-art reveal" aria-label="Abstract animated developer illustration">
+        <div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div><div class="art-orbit orbit-c"></div>
+        <div class="art-core"><span class="core-bracket">&lt;</span><span class="core-slash">/</span><span class="core-bracket">&gt;</span></div>
+        <div class="float-card float-card-top"><span class="mini-dot"></span><span>BUILDING WITH PURPOSE</span></div>
+        <div class="float-card float-card-bottom"><span class="code-icon">{ }</span><div><strong>Full-stack mindset</strong><small>From interface to data</small></div></div>
+        <span class="art-star star-one">✳</span><span class="art-star star-two">✦</span>
+        <div class="art-caption mono">DESIGN / BUILD / IMPROVE</div>
+      </div>
+      <a class="scroll-cue mono" href="#work"><span class="scroll-wheel"></span> SCROLL TO EXPLORE</a>
+    </section>
 
-  <section id="experience" class="section">
-    <div class="section-head">
-      <h2>Experience</h2>
-    </div>
-    <ol class="timeline">
-      <li>
-        <h3>Digital Marketing Associate</h3>
-        <p class="meta">FPS Digital Marketing</p>
-        <p>WordPress, Elementor</p>
-      </li>
-      <li>
-        <h3>Software Engineer · N-Compass TV</h3>
-        <p class="meta">Cebu, Philippines</p>
-        <p>QA automation testing with Python and Selenium.</p>
-      </li>
-      <li>
-        <h3>Front-End Developer Intern</h3>
-        <p class="meta">Internship</p>
-        <p>Angular, Figma.</p>
-      </li>
-      <li>
-        <h3>Capstone Full-Stack Developer</h3>
-        <p class="meta">Angular, Nodejs, Prisma, MySQL, Figma</p>
-      </li>
-    </ol>
-  </section>
+    <section class="ticker" aria-label="Areas of work">
+      <div class="ticker-track"><span>FRONTEND DEVELOPMENT</span><b>✳</b><span>FULL-STACK APPLICATIONS</span><b>✳</b><span>UI / UX DESIGN</span><b>✳</b><span>QA AUTOMATION</span><b>✳</b><span>FRONTEND DEVELOPMENT</span><b>✳</b><span>FULL-STACK APPLICATIONS</span><b>✳</b><span>UI / UX DESIGN</span><b>✳</b><span>QA AUTOMATION</span><b>✳</b></div>
+    </section>
 
-  <section id="contact" class="section contact">
-    <h2>Let’s build something.</h2>
-    <p>Open to software developer roles web apps, APIs, and AI-assisted delivery.</p>
-    <div class="contact-rows">
-      <a href="mailto:Shansudelacruz@gmail.com">Shansudelacruz@gmail.com</a>
-      <a href="tel:+639563663657">+63 956 366 3657</a>
-      <a href="https://www.linkedin.com/in/ronel-dela-cruz/" target="_blank" rel="noreferrer">LinkedIn</a>
-    </div>
-  </section>
+    <section class="section-shell work-section" id="work">
+      <div class="section-heading reveal"><div><p class="section-index mono">01 / SELECTED WORK</p><h2>Built to be <span class="gradient-text">useful.</span></h2></div><p class="section-intro">A mix of applications, interfaces, and automation work — each focused on solving a real workflow problem.</p></div>
+      <div class="project-grid">
+        <article class="project-card project-featured reveal">
+          <div class="project-visual visual-lab"><div class="visual-top"><span>LABFLOW / 01</span><span class="visual-live">● SYSTEM CONCEPT</span></div><div class="mock-window"><div class="mock-sidebar"><i></i><i></i><i></i><i></i></div><div class="mock-main"><div class="mock-heading"></div><div class="mock-stats"><i></i><i></i><i></i></div><div class="mock-table"><i></i><i></i><i></i><i></i></div></div></div><span class="visual-orb"></span></div>
+          <div class="project-body"><div class="project-meta"><span>FULL-STACK · CAPSTONE</span><span>01</span></div><h3>Clinical Laboratory<br>Information System</h3><p>A system concept for tracking laboratory samples and consumables, helping staff manage status and records with less manual tracking.</p><div class="tag-list"><span>Angular</span><span>Node.js</span><span>Prisma</span><span>MySQL</span><span>Figma</span></div><a class="text-link" href="#contact">Discuss this project <span>↗</span></a></div>
+        </article>
+        <article class="project-card reveal">
+          <div class="project-visual visual-inventory"><div class="visual-top"><span>ASSET TRACKER / 02</span><span>UI BUILD</span></div><div class="inventory-ui"><div class="inv-title">Equipment overview <span>•••</span></div><div class="inv-number">128 <small>items tracked</small></div><div class="inv-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="inv-rows"><i></i><i></i><i></i></div></div><span class="visual-ring"></span></div>
+          <div class="project-body"><div class="project-meta"><span>FRONTEND DEVELOPMENT</span><span>02</span></div><h3>Equipment Inventory</h3><p>A Figma-designed, Angular frontend for tracking equipment, utensils, and computer parts, helping staff add, update, and locate items more easily.</p><div class="tag-list"><span>Figma</span><span>Angular</span></div><a class="text-link" href="#contact">Discuss this project <span>↗</span></a></div>
+        </article>
+        <article class="project-card reveal">
+          <div class="project-visual visual-automation"><div class="visual-top"><span>TEST RUN / 03</span><span>PYTHON</span></div><div class="terminal"><div class="terminal-head"><i></i><i></i><i></i><span>test_suite.py</span></div><p><b>›</b> initialize_browser()</p><p><b>›</b> test_user_journey()</p><p class="terminal-success">✓  user flow verified</p><p class="terminal-success">✓  regression checks passed</p><div class="terminal-cursor"></div></div><span class="automation-spark">✳</span></div>
+          <div class="project-body"><div class="project-meta"><span>QUALITY ENGINEERING</span><span>03</span></div><h3>QA Automation</h3><p>Python and Selenium test automation focused on real user journeys, catching broken flows and regressions before release.</p><div class="tag-list"><span>Python</span><span>Selenium</span><span>QA</span></div><a class="text-link" href="#contact">Discuss this project <span>↗</span></a></div>
+        </article>
+        <article class="project-card project-wide reveal">
+          <div class="project-visual visual-growth"><div class="visual-top"><span>WEB + AUTOMATION / 04</span><span>GROWTH SYSTEMS</span></div><div class="growth-layout"><div class="growth-copy"><span>MAKE EVERY<br>STEP COUNT.</span><small>WEBSITE · SEO · AUTOMATION</small></div><div class="growth-flow"><i>LEAD</i><b>↘</b><i>FOLLOW-UP</i><b>↘</b><i>CONVERSION</i></div></div><span class="growth-glow"></span></div>
+          <div class="project-body"><div class="project-meta"><span>WEB DEVELOPMENT · MARKETING AUTOMATION</span><span>04</span></div><h3>Websites & workflow automation</h3><p>Website updates, SEO improvements, audience segmentation, and SMS/email follow-up workflows using WordPress, Elementor, GoHighLevel, Zapier, and Aloware.</p><div class="tag-list"><span>WordPress</span><span>Elementor</span><span>GoHighLevel</span><span>Zapier</span><span>Aloware</span></div><a class="text-link" href="#contact">Discuss this work <span>↗</span></a></div>
+        </article>
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2026 Ronel M. Dela Cruz · Silay City, Negros Occidental</p>
-  </footer>
+    <section class="about-section" id="about">
+      <div class="section-shell about-layout">
+        <div class="about-heading reveal"><p class="section-index mono">02 / A LITTLE ABOUT ME</p><h2>Curious by nature.<br><span class="gradient-text">Builder by choice.</span></h2><div class="about-stamp">ALWAYS<br>LEARNING <span>↗</span></div></div>
+        <div class="about-content reveal"><p class="about-lede">I enjoy taking a messy process and turning it into something clear, usable, and easier to maintain.</p><p>I completed a BS in Information Systems at Carlos Hilado Memorial State University. My experience spans frontend development, UI design, software testing, website optimization, and marketing automation. I’m always learning and looking for ways to make the next build better.</p><div class="about-facts"><div><span class="fact-number">01</span><strong>Understand</strong><small>Start with the people and problem.</small></div><div><span class="fact-number">02</span><strong>Build</strong><small>Make the solution clear and practical.</small></div><div><span class="fact-number">03</span><strong>Improve</strong><small>Test, learn, and refine the details.</small></div></div></div>
+      </div>
+    </section>
+
+    <section class="section-shell skills-section">
+      <div class="section-heading reveal"><div><p class="section-index mono">CAPABILITIES</p><h2>Tools I work <span class="gradient-text">with.</span></h2></div><p class="section-intro">A flexible toolkit for building, testing, and improving digital products.</p></div>
+      <div class="skills-grid">
+        <div class="skill-group reveal"><div class="skill-icon">⌘</div><h3>Frontend</h3><p>Building responsive, accessible interfaces and component-driven experiences.</p><div class="skill-chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span><span>Angular</span></div></div>
+        <div class="skill-group reveal"><div class="skill-icon">⌁</div><h3>Backend & data</h3><p>Connecting interfaces to APIs, application logic, and structured data.</p><div class="skill-chips"><span>Node.js</span><span>REST APIs</span><span>Prisma</span><span>MySQL</span><span>PostgreSQL</span><span>PHP</span></div></div>
+        <div class="skill-group reveal"><div class="skill-icon">◈</div><h3>Design & web</h3><p>Planning user flows and shaping clear, consistent web experiences.</p><div class="skill-chips"><span>Figma</span><span>WordPress</span><span>Elementor</span><span>SEO</span></div></div>
+        <div class="skill-group reveal"><div class="skill-icon">⌕</div><h3>Quality & automation</h3><p>Testing realistic user journeys and reducing repetitive manual work.</p><div class="skill-chips"><span>Python</span><span>Selenium</span><span>GitHub</span><span>Zapier</span><span>GoHighLevel</span></div></div>
+      </div>
+    </section>
+
+    <section class="section-shell journey-section" id="journey">
+      <div class="section-heading reveal"><div><p class="section-index mono">03 / THE JOURNEY</p><h2>Learning by <span class="gradient-text">doing.</span></h2></div><p class="section-intro">A cross-functional path that connects design, development, quality, and digital operations.</p></div>
+      <div class="timeline">
+        <article class="timeline-item reveal"><div class="timeline-date mono">WEB / SEO</div><div class="timeline-marker"></div><div class="timeline-content"><h3>Digital Marketing Associate</h3><p class="timeline-place">FPS Digital Marketing</p><p>Supported website development, WordPress/Elementor updates, SEO audits, campaign operations, and marketing automation workflows.</p></div></article>
+        <article class="timeline-item reveal"><div class="timeline-date mono">SOFTWARE QUALITY</div><div class="timeline-marker"></div><div class="timeline-content"><h3>Software Engineering & QA</h3><p class="timeline-place">N-Compass TV · Cebu, Philippines</p><p>Worked with Python and Selenium for test automation, and contributed to front-end interface work for equipment inventory workflows.</p></div></article>
+        <article class="timeline-item reveal"><div class="timeline-date mono">UI / FRONTEND</div><div class="timeline-marker"></div><div class="timeline-content"><h3>Front-End Developer Intern</h3><p class="timeline-place">Figma → Angular</p><p>Designed UI screens in Figma and implemented responsive front-end pages with Angular.</p></div></article>
+        <article class="timeline-item reveal"><div class="timeline-date mono">2021 — 2025</div><div class="timeline-marker"></div><div class="timeline-content"><h3>BS Information Systems</h3><p class="timeline-place">Carlos Hilado Memorial State University</p><p>Built academic projects including a full-stack Clinical Laboratory Information System.</p></div></article>
+      </div>
+    </section>
+
+    <section class="chat-section">
+      <div class="section-shell chat-layout">
+        <div class="chat-intro reveal"><p class="section-index mono">A SMALL INTERACTIVE EXTRA</p><h2>Ask about<br><span class="gradient-text">my work.</span></h2><p>Explore a few quick answers about my projects, tools, and approach. This demo uses a local set of prepared answers.</p><div class="chat-decoration">?</div></div>
+        <div class="chat-panel reveal"><div class="chat-top"><div class="chat-avatar">r.</div><div><strong>Portfolio guide</strong><small><span class="status-dot"></span> Ready to answer</small></div><span class="chat-badge">LOCAL DEMO</span></div><div class="chat-log" id="chatLog" aria-live="polite"></div><div class="chat-chips" id="chips"></div><form class="chat-form" id="chatForm"><label class="sr-only" for="chatInput">Ask about Ronel's work</label><input id="chatInput" type="text" placeholder="Ask about a project or skill…" autocomplete="off"><button type="submit" aria-label="Send question">↗</button></form></div>
+      </div>
+    </section>
+
+    <section class="contact-section section-shell" id="contact">
+      <div class="contact-top reveal"><p class="section-index mono">04 / YOUR NEXT MOVE</p><p class="contact-note">Have a project, opening, or idea in mind?</p></div>
+      <div class="contact-main reveal"><h2>Let’s make<br><span class="gradient-text">something matter.</span></h2><a class="contact-arrow" href="mailto:Shansudelacruz@gmail.com" aria-label="Email Ronel">↗</a></div>
+      <div class="contact-bottom reveal"><a class="email-link" href="mailto:Shansudelacruz@gmail.com">Shansudelacruz@gmail.com <span>↗</span></a><div class="social-links"><a href="https://www.linkedin.com/in/ronel-dela-cruz/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/shnsu" target="_blank" rel="noreferrer">GitHub ↗</a><span>Silay City, Philippines</span></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="#home"><span class="brand-mark">r.</span><span>RONEL DELA CRUZ</span></a><span class="mono">DESIGNED TO KEEP EVOLVING · © 2026</span><a href="#home" class="back-top">BACK TO TOP ↑</a></footer>
   <script src="script.js"></script>
 </body>
 </html>
-

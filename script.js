@@ -1,62 +1,83 @@
 const btn = document.getElementById("menuBtn");
 const links = document.getElementById("navLinks");
-btn.addEventListener("click", () => links.classList.toggle("open"));
-links.querySelectorAll("a").forEach((a) => {
-  a.addEventListener("click", () => links.classList.remove("open"));
-});
 
-document.addEventListener("contextmenu", function (e) {
-  e.preventDefault();
-});
+if (btn && links) {
+  btn.addEventListener("click", () => {
+    const isOpen = links.classList.toggle("open");
+    btn.setAttribute("aria-expanded", String(isOpen));
+    btn.querySelector("span").textContent = isOpen ? "－" : "＋";
+  });
+  links.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+      links.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+      btn.querySelector("span").textContent = "＋";
+    });
+  });
+}
+
+// Reveal sections as they enter the viewport.
+const revealItems = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+  revealItems.forEach((item, index) => {
+    item.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+    revealObserver.observe(item);
+  });
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
+// Gentle 3D tilt on desktop project cards; disabled for touch/reduced-motion users.
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(900px) rotateY(${x * 2.8}deg) rotateX(${-y * 2.2}deg) translateY(-5px)`;
+    });
+    card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+  });
+}
+
 const FACTS = [
-  {
-    keys: ["lab", "clinical", "sample", "capstone", "prisma", "mysql", "hospital"],
-    text: "My capstone is a Clinical Laboratory Information System. I designed the UI and built it full-stack: Angular on the front, Node.js API, Prisma + MySQL for samples and consumables like cotton and syringes. Goal: less manual tracking and clearer status for lab staff.",
-  },
-  {
-    keys: ["n-compass", "ncompass", "inventory", "react", "equipment", "utensil", "cebu"],
-    text: "At N-Compass TV in Cebu I work as a software engineer. I built a React inventory front end for equipment, utensils, and computer parts so staff can add, update, and find items without manual logs.",
-  },
-  {
-    keys: ["qa", "selenium", "python", "test", "automation", "sdet"],
-    text: "On the engineering side at N-Compass I write QA automation with Python and Selenium. I cover real user paths so regressions, broken flows, and performance issues show up before release.",
-  },
-  {
-    keys: ["intern", "figma", "angular", "design", "ui"],
-    text: "During my internship I designed screens in Figma, then implemented them in Angular as responsive front-end pages. Prototype first, then working UI with the team.",
-  },
-  {
-    keys: ["seo", "marketing", "wordpress", "elementor"],
-    text: "In my current SEO and digital marketing support work I improve page structure, accessibility, and content flow so sites stay usable and easier to find.",
-  },
-  {
-    keys: ["ai", "claude", "chatgpt", "gemini", "copilot", "api", "integrat"],
-    text: "I use ChatGPT, Claude, Gemini, and Copilot to move faster. For a product integration I would add a Node endpoint that sends a record to an LLM API and returns a summary into Angular. I would not put API keys in the browser.",
-  },
-  {
-    keys: ["stack", "skill", "tech", "language"],
-    text: "Stack I use: HTML, CSS, JavaScript, Angular 14, React, Node.js, PHP, Python, MySQL, Prisma, Selenium, Figma, WordPress, GitHub.",
-  },
-  {
-    keys: ["contact", "email", "hire", "phone", "linkedin"],
-    text: "Email Shansudelacruz@gmail.com, phone +63 956 366 3657, or LinkedIn linkedin.com/in/ronel-dela-cruz. Based in Silay City, Negros Occidental, Philippines.",
-  },
-  {
-    keys: ["school", "educat", "university", "degree"],
-    text: "BS Information Systems, Carlos Hilado Memorial State University, 2021–2025.",
-  },
+  { keys: ["lab", "clinical", "sample", "capstone", "prisma", "mysql", "hospital"],
+    text: "My capstone is a Clinical Laboratory Information System. It uses Angular for the frontend, a Node.js API, and Prisma with MySQL to track samples and consumables such as cotton and syringes. The goal is clearer status tracking and less manual work." },
+  { keys: ["n-compass", "ncompass", "inventory", "equipment", "utensil", "cebu"],
+    text: "For the N-Compass equipment inventory work, I designed the UI in Figma and worked on the Angular frontend for tracking equipment, utensils, and computer parts. The interface helps staff add, update, and find items without relying on manual logs." },
+  { keys: ["qa", "selenium", "python", "test", "automation", "sdet"],
+    text: "I use Python and Selenium for QA automation, focusing on realistic user paths so broken flows and regressions can be caught before release." },
+  { keys: ["intern", "figma", "angular", "design", "ui"],
+    text: "During my internship, I designed screens in Figma and implemented responsive frontend pages with Angular. My process is to plan the interface, then turn the design into a working UI." },
+  { keys: ["seo", "marketing", "wordpress", "elementor", "zapier", "aloware", "gohighlevel"],
+    text: "My digital marketing work included WordPress and Elementor website updates, SEO audits, keyword research, and SMS/email automation workflows using GoHighLevel, Zapier, and Aloware." },
+  { keys: ["ai", "claude", "chatgpt", "gemini", "copilot", "api", "integrat"],
+    text: "For an AI integration, I would send requests through a backend endpoint (for example, Node.js) and keep API keys on the server rather than exposing them in the browser." },
+  { keys: ["stack", "skill", "tech", "language"],
+    text: "My toolkit includes HTML, CSS, JavaScript, Angular, React, Node.js, PHP, Python, MySQL, PostgreSQL, Prisma, Selenium, Figma, WordPress, GitHub, and marketing automation tools." },
+  { keys: ["contact", "email", "hire", "phone", "linkedin", "github"],
+    text: "You can reach me at Shansudelacruz@gmail.com, connect on LinkedIn at linkedin.com/in/ronel-dela-cruz, or view GitHub projects at github.com/shnsu." },
+  { keys: ["school", "educat", "university", "degree"],
+    text: "I completed a BS in Information Systems at Carlos Hilado Memorial State University, from 2021 to 2025." },
+  { keys: ["pos", "cafe", "sales", "postgres"],
+    text: "I have also been building a POS and inventory system for a cafe using React, Node.js, and PostgreSQL, with product management, sales recording, and stock deduction workflows." }
 ];
 
-const FALLBACK =
-  "I can talk about the lab system, N-Compass inventory, Python/Selenium QA, the Figma-to-Angular internship, my stack, or how I would add an LLM API. Try one of those.";
-
+const FALLBACK = "I can share more about the Clinical Laboratory Information System, equipment inventory, Python/Selenium QA, Figma-to-Angular work, websites and marketing automation, or my technical toolkit. Try asking about one of those topics.";
 const SUGGESTIONS = [
-  "What did you build for the lab?",
+  "Tell me about the lab system",
   "How do you use Selenium?",
-  "How would you add ChatGPT to an app?",
-  "What is your stack?",
+  "What is your tech stack?"
 ];
-
 const log = document.getElementById("chatLog");
 const form = document.getElementById("chatForm");
 const input = document.getElementById("chatInput");
@@ -64,51 +85,50 @@ const chips = document.getElementById("chips");
 
 function addBubble(text, who) {
   const el = document.createElement("div");
-  el.className = "bubble " + who;
+  el.className = `bubble ${who}`;
   el.textContent = text;
   log.appendChild(el);
   log.scrollTop = log.scrollHeight;
   return el;
 }
-
-function answer(q) {
-  const s = q.toLowerCase();
-  const hit = FACTS.find((f) => f.keys.some((k) => s.includes(k)));
+function answer(question) {
+  const normalized = question.toLowerCase();
+  const hit = FACTS.find((fact) => fact.keys.some((key) => normalized.includes(key)));
   return hit ? hit.text : FALLBACK;
 }
-
 function typeBot(text) {
   const el = addBubble("", "bot");
+  // Respect reduced motion and avoid a long character-by-character wait for long answers.
+  if (reduceMotion) {
+    el.textContent = text;
+    log.scrollTop = log.scrollHeight;
+    return;
+  }
   let i = 0;
-  const t = setInterval(() => {
+  const timer = setInterval(() => {
     el.textContent = text.slice(0, ++i);
     log.scrollTop = log.scrollHeight;
-    if (i >= text.length) clearInterval(t);
-  }, 12);
+    if (i >= text.length) clearInterval(timer);
+  }, 8);
 }
-
-function ask(q) {
-  addBubble(q, "user");
-  setTimeout(() => typeBot(answer(q)), 250);
+function ask(question) {
+  const clean = question.trim();
+  if (!clean) return;
+  addBubble(clean, "user");
+  window.setTimeout(() => typeBot(answer(clean)), 180);
 }
-
-SUGGESTIONS.forEach((s) => {
-  const b = document.createElement("button");
-  b.type = "button";
-  b.textContent = s;
-  b.addEventListener("click", () => ask(s));
-  chips.appendChild(b);
-});
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const q = input.value.trim();
-  if (!q) return;
-  input.value = "";
-  ask(q);
-});
-
-addBubble(
-  "Hi — I’m a guided assistant over Ronel’s work. Ask about the lab system, N-Compass, QA automation, or how he’d hook an AI API into a Node + Angular app.",
-  "bot"
-);
+if (log && form && input && chips) {
+  SUGGESTIONS.forEach((suggestion) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = suggestion;
+    button.addEventListener("click", () => ask(suggestion));
+    chips.appendChild(button);
+  });
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    ask(input.value);
+    input.value = "";
+  });
+  addBubble("Hi! I’m a small portfolio guide. Ask about a project, a tool, or how I approach development. Answers are based on prepared portfolio information.", "bot");
+}
