@@ -16,7 +16,6 @@ if (btn && links) {
   });
 }
 
-// Reveal sections as they enter the viewport.
 const revealItems = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -35,7 +34,6 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-// Gentle 3D tilt on desktop project cards; disabled for touch/reduced-motion users.
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
   document.querySelectorAll(".project-card").forEach((card) => {
@@ -98,7 +96,6 @@ function answer(question) {
 }
 function typeBot(text) {
   const el = addBubble("", "bot");
-  // Respect reduced motion and avoid a long character-by-character wait for long answers.
   if (reduceMotion) {
     el.textContent = text;
     log.scrollTop = log.scrollHeight;
