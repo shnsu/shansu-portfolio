@@ -133,3 +133,75 @@ if (log && form && input && chips) {
 document.addEventListener("contextmenu", function (event) {
   event.preventDefault();
 });
+
+/* Custom animated cursor with particle trail */
+(() => {
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (!finePointer || reducedMotion) return;
+
+  const glow = document.createElement("div");
+  glow.className = "cursor-glow";
+
+  const ring = document.createElement("div");
+  ring.className = "cursor-ring";
+
+  document.body.append(glow, ring);
+
+  let lastParticleX = 0;
+  let lastParticleY = 0;
+
+  document.addEventListener("mousemove", (event) => {
+    const x = event.clientX;
+    const y = event.clientY;
+
+    glow.style.transform =
+      `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+
+    ring.style.transform =
+      `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+
+    const distance = Math.hypot(
+      x - lastParticleX,
+      y - lastParticleY
+    );
+
+    if (distance > 12) {
+      const particle = document.createElement("div");
+      particle.className = "cursor-particle";
+
+      particle.style.transform =
+        `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+
+      document.body.appendChild(particle);
+
+      particle.addEventListener("animationend", () => {
+        particle.remove();
+      });
+
+      lastParticleX = x;
+      lastParticleY = y;
+    }
+  });
+
+  document.addEventListener("mousedown", () => {
+    ring.classList.add("clicking");
+  });
+
+  document.addEventListener("mouseup", () => {
+    ring.classList.remove("clicking");
+  });
+
+  document.addEventListener("mouseleave", () => {
+    glow.style.display = "none";
+    ring.style.display = "none";
+  });
+
+  document.addEventListener("mouseenter", () => {
+    glow.style.display = "";
+    ring.style.display = "";
+  });
+})();
