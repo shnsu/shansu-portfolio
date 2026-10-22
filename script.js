@@ -132,3 +132,7 @@ if (log && form && input && chips) {
   });
   addBubble("Hi! I’m a small portfolio guide. Ask about a project, a tool, or how I approach development. Answers are based on prepared portfolio information.", "bot");
 }
+
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
