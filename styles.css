@@ -73,3 +73,707 @@
     display: none !important;
   }
 }
+
+
+/* ========================================
+   PORTFOLIO WELCOME INTRO
+   Minimal / Editorial / Developer aesthetic
+======================================== */
+
+#welcomeIntro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: #0a0b12;
+  color: #f4f4fa;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.75s ease,
+    visibility 0.75s ease;
+}
+
+#welcomeIntro.intro-exit {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.intro-active {
+  overflow: hidden;
+}
+
+/* Soft ambient lighting */
+
+.intro-glow {
+  position: absolute;
+  z-index: -1;
+  width: min(55vw, 650px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  animation: introGlowFloat 10s ease-in-out infinite alternate;
+}
+
+.intro-glow-one {
+  top: -35%;
+  right: -12%;
+  background: rgb(104 75 255 / 14%);
+}
+
+.intro-glow-two {
+  bottom: -45%;
+  left: -12%;
+  background: rgb(0 225 190 / 10%);
+  animation-delay: -5s;
+}
+
+/* Very subtle grid texture */
+
+#welcomeIntro::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 2.2%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 2.2%) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  content: "";
+  pointer-events: none;
+}
+
+.intro-content {
+  width: min(920px, 88%);
+  padding: 50px 0;
+  animation: introContentEnter 1s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.intro-topline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: clamp(55px, 10vh, 100px);
+  color: #a2a3b6;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.intro-status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #00e5bd;
+  box-shadow: 0 0 12px rgb(0 229 189 / 60%);
+}
+
+.intro-topline-line {
+  width: 50px;
+  height: 1px;
+  background: rgb(255 255 255 / 20%);
+}
+
+.intro-eyebrow {
+  margin: 0 0 15px;
+  color: #b5b4c8;
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+.intro-name {
+  margin: 0;
+  color: #f5f4ff;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(48px, 8.5vw, 100px);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 1.04;
+}
+
+.intro-name span {
+  display: block;
+  width: fit-content;
+  background: linear-gradient(
+    100deg,
+    #8c83ff 0%,
+    #c4b5fd 42%,
+    #5de7cf 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro-role {
+  margin: 26px 0 0;
+  color: #d3d3e0;
+  font-size: clamp(14px, 2vw, 19px);
+  line-height: 1.8;
+}
+
+.intro-role span {
+  padding: 0 7px;
+  color: #8b82ff;
+}
+
+.intro-description {
+  max-width: 470px;
+  margin: 14px 0 0;
+  color: #9293a8;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.intro-bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 35px;
+}
+
+#welcomeIntro #enterPortfolio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: 54px;
+  padding: 0 21px;
+  border: 1px solid rgb(170 159 255 / 60%);
+  border-radius: 6px;
+  background: linear-gradient(
+    110deg,
+    rgb(137 121 255 / 15%),
+    rgb(0 229 189 / 7%)
+  );
+  color: #f4f3ff;
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+#welcomeIntro #enterPortfolio:hover {
+  transform: translateY(-3px);
+  border-color: #8b82ff;
+  background: rgb(139 130 255 / 20%);
+  box-shadow: 0 10px 35px rgb(139 130 255 / 12%);
+}
+
+#welcomeIntro #enterPortfolio:focus-visible {
+  outline: 2px solid #5de7cf;
+  outline-offset: 5px;
+}
+
+.intro-button-arrow {
+  color: #8e85ff;
+  font-size: 20px;
+  transition: transform 0.25s ease;
+}
+
+#welcomeIntro #enterPortfolio:hover .intro-button-arrow {
+  transform: translate(3px, -3px);
+}
+
+.intro-scroll-label {
+  color: #77788c;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.intro-decoration {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(50px, 9vh, 85px);
+  color: #797a90;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.intro-decoration-slash {
+  color: #8b82ff;
+}
+
+.intro-corner {
+  position: absolute;
+  color: #68697c;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.intro-corner-top {
+  top: 32px;
+  right: 5%;
+}
+
+.intro-corner-bottom {
+  right: 5%;
+  bottom: 32px;
+}
+
+@keyframes introContentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introGlowFloat {
+  from {
+    transform: translate3d(-12px, -8px, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(20px, 16px, 0) scale(1.12);
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-content {
+    width: 86%;
+  }
+
+  .intro-topline {
+    margin-bottom: 65px;
+    gap: 8px;
+    font-size: 8px;
+    letter-spacing: 1.3px;
+  }
+
+  .intro-topline-line {
+    width: 22px;
+  }
+
+  .intro-name {
+    font-size: clamp(47px, 12vw, 70px);
+  }
+
+  .intro-role {
+    max-width: 320px;
+    font-size: 13px;
+  }
+
+  .intro-description {
+    max-width: 340px;
+    font-size: 13px;
+  }
+
+  .intro-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .intro-decoration {
+    gap: 8px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .intro-corner-top {
+    top: 20px;
+  }
+
+  .intro-corner-bottom {
+    bottom: 20px;
+  }
+
+  .intro-glow {
+    width: 85vw;
+    filter: blur(75px);
+  }
+}
+
+@media (max-height: 650px) and (min-width: 601px) {
+  .intro-topline {
+    margin-bottom: 35px;
+  }
+
+  .intro-decoration {
+    margin-top: 35px;
+  }
+
+  .intro-content {
+    padding: 25px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #welcomeIntro,
+  #welcomeIntro #enterPortfolio,
+  #welcomeIntro #enterPortfolio .intro-button-arrow {
+    transition: none;
+  }
+
+  .intro-content,
+  .intro-glow {
+    animation: none;
+  }
+}
+
+
+/* ==========================================
+   GLOBAL ANIMATED BACKGROUND
+   Welcome screen + main portfolio
+========================================== */
+
+/* Keep the existing dark portfolio background */
+body {
+  background-color: #0a0b12;
+}
+
+/* Existing ambient glow elements */
+.ambient {
+  position: fixed;
+  z-index: -1;
+  width: min(55vw, 700px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+  opacity: 0.7;
+  will-change: transform;
+}
+
+.ambient-one {
+  top: -25%;
+  left: -15%;
+  background: radial-gradient(
+    circle,
+    rgb(105 83 255 / 22%) 0%,
+    rgb(105 83 255 / 8%) 40%,
+    transparent 70%
+  );
+  animation: portfolioGlowOne 22s ease-in-out infinite alternate;
+}
+
+.ambient-two {
+  right: -15%;
+  bottom: -25%;
+  background: radial-gradient(
+    circle,
+    rgb(0 225 190 / 16%) 0%,
+    rgb(0 225 190 / 6%) 42%,
+    transparent 70%
+  );
+  animation: portfolioGlowTwo 26s ease-in-out infinite alternate;
+}
+
+/* Subtle animated grid across the main website */
+.grid-overlay {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      rgb(164 157 255 / 3%) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgb(164 157 255 / 3%) 1px,
+      transparent 1px
+    );
+  background-size: 65px 65px;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  animation: portfolioGridDrift 35s linear infinite;
+}
+
+/* Welcome screen's existing ambient glows */
+.intro-glow {
+  position: absolute;
+  z-index: -1;
+  width: min(60vw, 700px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.intro-glow-one {
+  top: -35%;
+  right: -12%;
+  background: radial-gradient(
+    circle,
+    rgb(120 96 255 / 22%),
+    rgb(120 96 255 / 5%) 50%,
+    transparent 72%
+  );
+  animation: portfolioGlowOne 18s ease-in-out infinite alternate;
+}
+
+.intro-glow-two {
+  bottom: -40%;
+  left: -12%;
+  background: radial-gradient(
+    circle,
+    rgb(0 229 189 / 17%),
+    rgb(0 229 189 / 4%) 50%,
+    transparent 72%
+  );
+  animation: portfolioGlowTwo 24s ease-in-out infinite alternate;
+}
+
+/* Slow, organic movement */
+@keyframes portfolioGlowOne {
+  0% {
+    transform: translate3d(-3%, -2%, 0) scale(0.95);
+  }
+
+  50% {
+    transform: translate3d(8%, 7%, 0) scale(1.12);
+  }
+
+  100% {
+    transform: translate3d(2%, 13%, 0) scale(1.02);
+  }
+}
+
+@keyframes portfolioGlowTwo {
+  0% {
+    transform: translate3d(5%, 3%, 0) scale(1.08);
+  }
+
+  50% {
+    transform: translate3d(-8%, -7%, 0) scale(0.92);
+  }
+
+  100% {
+    transform: translate3d(3%, -12%, 0) scale(1.13);
+  }
+}
+
+/* Extremely slow grid movement */
+@keyframes portfolioGridDrift {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 65px 65px;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .ambient,
+  .intro-glow {
+    width: 90vw;
+    filter: blur(75px);
+    opacity: 0.6;
+  }
+
+  .grid-overlay {
+    background-size: 48px 48px;
+  }
+}
+
+/* Accessibility: respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .ambient,
+  .grid-overlay,
+  .intro-glow {
+    animation: none !important;
+    will-change: auto;
+  }
+}
+/* INTRO ROLE ROTATING ANIMATION */
+.intro-role {
+  display: grid;
+  place-items: center;
+  min-height: 1.8em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intro-role-item {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: introRoleCycle 9s infinite;
+  will-change: opacity, transform;
+}
+
+/* Each role appears for 3 seconds */
+.intro-role-item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.intro-role-item:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.intro-role-item:nth-child(3) {
+  animation-delay: 6s;
+}
+
+@keyframes introRoleCycle {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  8% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  33.33% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .intro-role-item {
+    animation: none;
+  }
+
+  .intro-role-item:first-child {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Highlight the rotating intro roles */
+.intro-eyebrow {
+  color: #a99aff;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.intro-role {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 2.2em;
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.intro-role-item {
+  grid-area: 1 / 1;
+  background: linear-gradient(100deg, #b9a6ff, #71ead0, #e4b8ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: introRoleCycle 9s infinite;
+}
+
+.intro-role-item:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.intro-role-item:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.intro-role-item:nth-child(3) {
+  animation-delay: 6s;
+}
+/* RESUME DOWNLOAD BUTTON */
+.intro-resume-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border: 1px solid rgba(185, 166, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(120, 96, 255, 0.08);
+  color: #e9e5ff;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.intro-resume-button:hover {
+  background: rgba(120, 96, 255, 0.18);
+  border-color: rgba(185, 166, 255, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(120, 96, 255, 0.15);
+}
+
+.intro-resume-button span:last-child {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.intro-resume-button:hover span:last-child {
+  transform: translateY(3px);
+}

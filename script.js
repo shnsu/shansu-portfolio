@@ -132,7 +132,7 @@ const FACTS = [
   },
   {
     keys: ["stack", "skill", "tech", "language"],
-    text: "My toolkit includes HTML, CSS, JavaScript, Angular, React, Node.js, PHP, Python, MySQL, PostgreSQL, Prisma, Selenium, Figma, WordPress, GitHub, and marketing automation tools.",
+    text: "My toolkit includes HTML, CSS, JavaScript, Angular, React, Node.js, PHP, Python, RESTful API, MySQL, PostgreSQL, Prisma, Selenium, Figma, WordPress, GitHub, and marketing automation tools.",
   },
   {
     keys: ["contact", "email", "hire", "phone", "linkedin", "github"],
@@ -365,3 +365,31 @@ document.addEventListener("keydown", (event) => {
     event.stopPropagation();
   }
 });
+
+/* ========================================
+   WELCOME INTRO BEHAVIOR
+======================================== */
+
+(() => {
+  const intro = document.getElementById("welcomeIntro");
+  const enterButton = document.getElementById("enterPortfolio");
+
+  if (!intro || !enterButton) return;
+
+  document.body.classList.add("intro-active");
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  enterButton.addEventListener("click", () => {
+    if (intro.classList.contains("intro-exit")) return;
+
+    intro.classList.add("intro-exit");
+    document.body.classList.remove("intro-active");
+
+    window.setTimeout(() => {
+      intro.remove();
+    }, reducedMotion ? 0 : 800);
+  });
+})();
